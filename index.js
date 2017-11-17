@@ -39,7 +39,7 @@ module.exports = function getWebmentionUrl(sourceUrl, cb) {
 			    endpoint = links.webmention || links['http://webmention.org/'];
 
 			if (endpoint) {
-				cb(undefined, url.resolve(sourceUrl, endpoint));
+				cb(undefined, url.resolve(res.responseUrl, endpoint));
 				return;
 			}
 		}
@@ -61,7 +61,7 @@ module.exports = function getWebmentionUrl(sourceUrl, cb) {
 				     typeof el.attribs.href !== 'undefined' &&
 				     !callbackFired) {
 					callbackFired = true;
-					cb(undefined, url.resolve(sourceUrl, el.attribs.href));
+					cb(undefined, url.resolve(res.responseUrl, el.attribs.href));
 					return;
 				}
 			});
