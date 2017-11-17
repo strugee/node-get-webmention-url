@@ -119,6 +119,21 @@ test('discover WebMention server URL from HTML <link> in body with multiple rel=
   });
 });
 
+test('discover WebMention server URL from HTML <link> in body with an empty string href= value', function (t) {
+  var target = 'http://' + host + ':' + port + '/good_url';
+  var server = http.createServer(function (req, res) {
+    res.statusCode = 200;
+    res.end('<html><head><link rel="http://webmention.org/" href="" /></head><body></body></html>');
+  }).listen(port);
+
+  lookupWebmentionServer(target, function (err, url) {
+    server.close();
+    t.error(err);
+    t.equal(url, target);
+    t.end();
+  });
+});
+
 test('discover WebMention server URL from HTML <a> in body', function (t) {
   var target = 'http://' + host + ':' + port + '/good_url';
   var server = http.createServer(function (req, res) {
@@ -160,6 +175,21 @@ test('discover WebMention server URL from HTML <a> in body with multiple rel= va
     server.close();
     t.error(err);
     t.equal(url, 'http://example.org/webmention');
+    t.end();
+  });
+});
+
+test('discover WebMention server URL from HTML <link> in body with an empty string href= value', function (t) {
+  var target = 'http://' + host + ':' + port + '/good_url';
+  var server = http.createServer(function (req, res) {
+    res.statusCode = 200;
+    res.end('<html><head><a rel="http://webmention.org/" href="">Webmention endpoint</a></head><body></body></html>');
+  }).listen(port);
+
+  lookupWebmentionServer(target, function (err, url) {
+    server.close();
+    t.error(err);
+    t.equal(url, target);
     t.end();
   });
 });
