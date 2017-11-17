@@ -25,6 +25,7 @@
     "tape": "^4.8.0"
   },
   "dependencies": {
+    "array.prototype.includes": "^1.0.0",
     "cheerio": "^1.0.0-rc.2",
     "concat-stream": "^1.6.0",
     "follow-redirects": "^1.2.5",

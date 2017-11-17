@@ -15,6 +15,8 @@
 
 'use strict';
 
+if (!Array.prototype.includes) require('es7-array.prototype.includes');
+
 var http = require('follow-redirects').http,
     https = require('follow-redirects').https,
     concat = require('concat-stream'),
