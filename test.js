@@ -1,5 +1,5 @@
 var test = require('tape');
-var lookupWebmentionServer = require('../');
+var lookupWebmentionServer = require('./index.js');
 var http = require('http');
 var host = 'localhost';
 var port = 3001;
