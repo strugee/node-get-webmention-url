@@ -1,0 +1,22 @@
+{
+  "name": "get-webmention-url",
+  "version": "1.0.0",
+  "description": "Get a Webmention endpoint from a URL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/strugee/node-get-webmention-url.git"
+  },
+  "keywords": [
+    "webmention"
+  ],
+  "author": "AJ Jordan <alex@strugee.net>",
+  "license": "LGPL-3.0+",
+  "bugs": {
+    "url": "https://github.com/strugee/node-get-webmention-url/issues"
+  },
+  "homepage": "https://github.com/strugee/node-get-webmention-url#readme"
+}
