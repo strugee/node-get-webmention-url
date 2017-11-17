@@ -37,6 +37,25 @@ lookup('https://example.com/index.html', function(err, url) {
 });
 ```
 
+```js
+var lookup = require('get-webmention-url'),
+    url = require('url');
+
+lookup(url.parse('https://example.com/index.html'), function(err, url) {
+	if (err) throw err;
+	console.log(url);
+});
+```
+
+```js
+var lookup = require('get-webmention-url');
+
+lookup({url: 'https://example.com/index.html', ua: 'foobar/1.0.0'}, function(err, url) {
+	if (err) throw err;
+	console.log(url);
+});
+```
+
 ## Security considerations
 
 This module does not do anything to address the Webmention spec's [security considerations section][]. You need to take care of this yourself.
