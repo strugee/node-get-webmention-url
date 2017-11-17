@@ -4,6 +4,12 @@
 
 ## 1.0.0 - 2017-11-17
 
+### Fixed
+
+* Documented passing an object as the first parameter in README.md
+
+## 1.0.0 - 2017-11-17
+
 ### Added
 
 * Initial release
