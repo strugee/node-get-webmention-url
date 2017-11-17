@@ -60,9 +60,9 @@ module.exports = function getWebmentionUrl(sourceUrl, cb) {
 				     // We explicitly check for undefined because we want to catch empty strings, but those are falsy
 				     typeof el.attribs.href !== 'undefined' &&
 				     !callbackFired) {
-						callbackFired = true;
-						cb(undefined, url.resolve(sourceUrl, el.attribs.href));
-						return;
+					callbackFired = true;
+					cb(undefined, url.resolve(sourceUrl, el.attribs.href));
+					return;
 				}
 			});
 
