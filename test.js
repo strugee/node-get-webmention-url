@@ -21,7 +21,7 @@ test('target server returns 4xx status code', function (t) {
   var target = 'http://' + host + ':' + port + '/bad_url';
   var server = http.createServer(function (req, res) {
     res.statusCode = 404;
-    res.setHeader('Link', '<http://example.org/webmention>; rel="http://webmention.org/"');
+    res.setHeader('Link', '<http://example.org/webmention>; rel="webmention"');
     res.end('test');
   }).listen(port);
 
@@ -47,7 +47,7 @@ test('successfully discovered WebMention server URL from Link header', function 
   var target = 'http://' + host + ':' + port + '/good_url';
   var server = http.createServer(function (req, res) {
     res.statusCode = 200;
-    res.setHeader('Link', '<http://example.org/webmention>; rel="http://webmention.org/"');
+    res.setHeader('Link', '<http://example.org/webmention>; rel="webmention"');
     res.end('test');
   }).listen(port);
 
@@ -63,7 +63,7 @@ test('successfully discovered WebMention server URL from relative Link header', 
   var target = 'http://' + host + ':' + port + '/good_url';
   var server = http.createServer(function (req, res) {
     res.statusCode = 200;
-    res.setHeader('Link', '</webmention>; rel="http://webmention.org/"');
+    res.setHeader('Link', '</webmention>; rel="webmention"');
     res.end('test');
   }).listen(port);
 
@@ -79,7 +79,7 @@ test('discover WebMention server URL from HTML body', function (t) {
   var target = 'http://' + host + ':' + port + '/good_url';
   var server = http.createServer(function (req, res) {
     res.statusCode = 200;
-    res.end('<html><head><link rel="stylesheet" href="fail.css"><link rel="http://webmention.org/" href="http://example.org/webmention"></head><body></body></html>');
+    res.end('<html><head><link rel="stylesheet" href="fail.css"><link rel="webmention" href="http://example.org/webmention"></head><body></body></html>');
   }).listen(port);
 
   lookupWebmentionServer(target, function (err, url) {
@@ -94,7 +94,7 @@ test('discover relative WebMention server URL from HTML body', function (t) {
   var target = 'http://' + host + ':' + port + '/good_url';
   var server = http.createServer(function (req, res) {
     res.statusCode = 200;
-    res.end('<html><head><link rel="stylesheet" href="fail.css"><link rel="http://webmention.org/" href="/webmention"></head><body></body></html>');
+    res.end('<html><head><link rel="stylesheet" href="fail.css"><link rel="webmention" href="/webmention"></head><body></body></html>');
   }).listen(port);
 
   lookupWebmentionServer(target, function (err, url) {
@@ -105,11 +105,11 @@ test('discover relative WebMention server URL from HTML body', function (t) {
   });
 });
 
-test('discover WebMention server URL from HTML body with v0.2 rel attribute', function (t) {
+test('discover WebMention server URL from HTML body with a legacy rel= attribute', function (t) {
   var target = 'http://' + host + ':' + port + '/good_url';
   var server = http.createServer(function (req, res) {
     res.statusCode = 200;
-    res.end('<html><head><link rel="stylesheet" href="fail.css"><link rel="webmention" href="http://example.org/webmention"></head><body></body></html>');
+    res.end('<html><head><link rel="stylesheet" href="fail.css"><link rel="http://webmention.org/" href="http://example.org/webmention"></head><body></body></html>');
   }).listen(port);
 
   lookupWebmentionServer(target, function (err, url) {
@@ -124,7 +124,7 @@ test('discover WebMention server URL from HTML <link> in body with multiple rel=
   var target = 'http://' + host + ':' + port + '/good_url';
   var server = http.createServer(function (req, res) {
     res.statusCode = 200;
-    res.end('<html><head><link rel="alternate http://webmention.org/ canonical" href="http://example.org/webmention" /></head><body></body></html>');
+    res.end('<html><head><link rel="alternate webmention canonical" href="http://example.org/webmention" /></head><body></body></html>');
   }).listen(port);
 
   lookupWebmentionServer(target, function (err, url) {
@@ -139,7 +139,7 @@ test('discover WebMention server URL from HTML <link> in body with an empty stri
   var target = 'http://' + host + ':' + port + '/good_url';
   var server = http.createServer(function (req, res) {
     res.statusCode = 200;
-    res.end('<html><head><link rel="http://webmention.org/" href="" /></head><body></body></html>');
+    res.end('<html><head><link rel="webmention" href="" /></head><body></body></html>');
   }).listen(port);
 
   lookupWebmentionServer(target, function (err, url) {
@@ -154,7 +154,7 @@ test('discover WebMention server URL from HTML <a> in body', function (t) {
   var target = 'http://' + host + ':' + port + '/good_url';
   var server = http.createServer(function (req, res) {
     res.statusCode = 200;
-    res.end('<html><head><a rel="http://webmention.org/" href="http://example.org/webmention">Webmention endpoint</a></head><body></body></html>');
+    res.end('<html><head><a rel="webmention" href="http://example.org/webmention">Webmention endpoint</a></head><body></body></html>');
   }).listen(port);
 
   lookupWebmentionServer(target, function (err, url) {
@@ -184,7 +184,7 @@ test('discover WebMention server URL from HTML <a> in body with multiple rel= va
   var target = 'http://' + host + ':' + port + '/good_url';
   var server = http.createServer(function (req, res) {
     res.statusCode = 200;
-    res.end('<html><head><a rel="alternate http://webmention.org/ canonical" href="http://example.org/webmention">Webmention endpoint</a></head><body></body></html>');
+    res.end('<html><head><a rel="alternate webmention canonical" href="http://example.org/webmention">Webmention endpoint</a></head><body></body></html>');
   }).listen(port);
 
   lookupWebmentionServer(target, function (err, url) {
@@ -199,7 +199,7 @@ test('discover WebMention server URL from HTML <link> in body with an empty stri
   var target = 'http://' + host + ':' + port + '/good_url';
   var server = http.createServer(function (req, res) {
     res.statusCode = 200;
-    res.end('<html><head><a rel="http://webmention.org/" href="">Webmention endpoint</a></head><body></body></html>');
+    res.end('<html><head><a rel="webmention" href="">Webmention endpoint</a></head><body></body></html>');
   }).listen(port);
 
   lookupWebmentionServer(target, function (err, url) {
