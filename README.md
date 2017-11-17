@@ -29,7 +29,8 @@ Only problems during HTTP requests are considered errors for the purposes of cal
 ## Example
 
 ```js
-var lookup = require('get-webmention-url')
+var lookup = require('get-webmention-url');
+
 lookup('https://example.com/index.html', function(err, url) {
 	if (err) throw err;
 	console.log(url);
