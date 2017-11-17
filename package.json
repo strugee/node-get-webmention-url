@@ -1,6 +1,6 @@
 {
   "name": "get-webmention-url",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Get a Webmention endpoint from a URL",
   "main": "index.js",
   "scripts": {
