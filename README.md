@@ -20,7 +20,9 @@ npm install get-webmention-url
 
 This module is a drop-in replacement for [`lookup-webmention-server`] except that if it encounters a relative URL in a Webmention `<link>` relation, it will resolve the URL to an absolute URL. Also it supports more discovery mechanisms.
 
-Specifically, the module exports a single function. Said function takes two arguments, a URL (as a string) and a callback. If an error is encountered, the callback is invoked with it as the first parameter. Otherwise, the Webmention endpoint (if found) will be passed as the second parameter to the callback.
+Specifically, the module exports a single function. Said function takes two arguments, a URL string or an object and a callback. If an error is encountered, the callback is invoked with it as the first parameter. Otherwise, the Webmention endpoint (if found) will be passed as the second parameter to the callback.
+
+If you pass an object as the first parameter, you have two options: it can either be an object as returned by `require('url').parse`, or an object with a `url` key. In either case, you can additionally pass the `ua` key to set the `User-Agent` that the library will use.
 
 Only problems during HTTP requests are considered errors for the purposes of callback invocation. Failure to find a valid Webmention endpoint is _not_ considered an error - you'll just get `undefined` as the second callback parameter.
 
