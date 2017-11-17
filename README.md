@@ -18,7 +18,7 @@ npm install get-webmention-url
 
 ## Usage
 
-This module is a drop-in replacement for [`lookup-webmention-server`] except that if it encounters a relative URL in a Webmention `<link>` relation, it will resolve the URL to an absolute URL.
+This module is a drop-in replacement for [`lookup-webmention-server`] except that if it encounters a relative URL in a Webmention `<link>` relation, it will resolve the URL to an absolute URL. Also it supports more discovery mechanisms.
 
 Specifically, the module exports a single function. Said function takes two arguments, a URL (as a string) and a callback. If an error is encountered, the callback is invoked with it as the first parameter. Otherwise, the Webmention endpoint (if found) will be passed as the second parameter to the callback.
 
