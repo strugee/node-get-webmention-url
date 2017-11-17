@@ -50,7 +50,7 @@ module.exports = function getWebmentionUrl(sourceUrl, cb) {
 
 			$('link, a').each(function(idx, el) {
 				if ((el.attribs.rel === 'webmention' ||
-				     el.attribs.rel.match(/^http:\/\/webmention\.org/)) && // XXX use RegExp.test()
+				     /^http:\/\/webmention\.org/.test(el.attribs.rel)) &&
 				     el.attribs.href &&
 				     !callbackFired) {
 						callbackFired = true;
