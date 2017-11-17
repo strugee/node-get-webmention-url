@@ -54,7 +54,7 @@ module.exports = function getWebmentionUrl(sourceUrl, cb) {
 				     el.attribs.href &&
 				     !callbackFired) {
 						callbackFired = true;
-						cb(undefined, el.attribs.href);
+						cb(undefined, url.resolve(sourceUrl, el.attribs.href));
 						return;
 				}
 			});
