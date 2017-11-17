@@ -38,4 +38,4 @@ AJ Jordan <alex@strugee.net>
 
 Lesser GPL 3.0+, except for the tests which were stolen from @connrs and so are BSD 3-clause
 
- [lookup-webmention-server]: https://github.com/connrs/node-lookup-webmention-server
+ [`lookup-webmention-server`]: https://github.com/connrs/node-lookup-webmention-server
