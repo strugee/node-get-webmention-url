@@ -2,7 +2,13 @@
 
 `get-webmention-url` adheres to [Semantic Versioning](http://semver.org/).
 
-## 1.0.0 - 2017-11-17
+## 1.0.2 - 2017-11-17
+
+### Fixed
+
+* Polyfill `Array.prototype.includes` for Node 4
+
+## 1.0.1 - 2017-11-17
 
 ### Fixed
 
