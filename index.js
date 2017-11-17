@@ -48,7 +48,7 @@ module.exports = function getWebmentionUrl(sourceUrl, cb) {
 		res.pipe(concat(function(buf) {
 			var $ = cheerio.load(buf.toString());
 
-			$('link').each(function(idx, el) {
+			$('link, a').each(function(idx, el) {
 				if ((el.attribs.rel === 'webmention' ||
 				     el.attribs.rel.match(/^http:\/\/webmention\.org/)) && // XXX use RegExp.test()
 				     el.attribs.href &&
