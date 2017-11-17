@@ -104,6 +104,21 @@ test('discover WebMention server URL from HTML body with v0.2 rel attribute', fu
   });
 });
 
+test('discover WebMention server URL from HTML <link> in body with multiple rel= values', function (t) {
+  var target = 'http://' + host + ':' + port + '/good_url';
+  var server = http.createServer(function (req, res) {
+    res.statusCode = 200;
+    res.end('<html><head><link rel="alternate http://webmention.org/ canonical" href="http://example.org/webmention" /></head><body></body></html>');
+  }).listen(port);
+
+  lookupWebmentionServer(target, function (err, url) {
+    server.close();
+    t.error(err);
+    t.equal(url, 'http://example.org/webmention');
+    t.end();
+  });
+});
+
 test('discover WebMention server URL from HTML <a> in body', function (t) {
   var target = 'http://' + host + ':' + port + '/good_url';
   var server = http.createServer(function (req, res) {
@@ -130,6 +145,21 @@ test('discover relative WebMention server URL from HTML <a> in body', function (
     server.close();
     t.error(err);
     t.equal(url, 'http://' + host + ':' + port + '/webmention');
+    t.end();
+  });
+});
+
+test('discover WebMention server URL from HTML <a> in body with multiple rel= values', function (t) {
+  var target = 'http://' + host + ':' + port + '/good_url';
+  var server = http.createServer(function (req, res) {
+    res.statusCode = 200;
+    res.end('<html><head><a rel="alternate http://webmention.org/ canonical" href="http://example.org/webmention">Webmention endpoint</a></head><body></body></html>');
+  }).listen(port);
+
+  lookupWebmentionServer(target, function (err, url) {
+    server.close();
+    t.error(err);
+    t.equal(url, 'http://example.org/webmention');
     t.end();
   });
 });

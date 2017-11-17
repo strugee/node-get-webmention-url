@@ -20,6 +20,7 @@ var http = require('follow-redirects').http,
     concat = require('concat-stream'),
     li = require('li'),
     cheerio = require('cheerio'),
+    compact = require('lodash.compact'),
     url = require('url');
 
 module.exports = function getWebmentionUrl(sourceUrl, cb) {
@@ -49,8 +50,13 @@ module.exports = function getWebmentionUrl(sourceUrl, cb) {
 			var $ = cheerio.load(buf.toString());
 
 			$('link, a').each(function(idx, el) {
-				if ((el.attribs.rel === 'webmention' ||
-				     /^http:\/\/webmention\.org/.test(el.attribs.rel)) &&
+				var rels = compact((el.attribs.rel || '').split(' ')),
+				    match = false;
+
+				rels.forEach(function(val) { if (/^http:\/\/webmention\.org/.test(val)) match = true; });
+
+				if ((rels.includes('webmention') ||
+				     match) &&
 				     el.attribs.href &&
 				     !callbackFired) {
 						callbackFired = true;
