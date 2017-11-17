@@ -43,7 +43,7 @@ test('error looking up target server', function (t) {
   });
 });
 
-test('successfully discovered WebMention server URL from link header', function (t) {
+test('successfully discovered WebMention server URL from Link header', function (t) {
   var target = 'http://' + host + ':' + port + '/good_url';
   var server = http.createServer(function (req, res) {
     res.statusCode = 200;
