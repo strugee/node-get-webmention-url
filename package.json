@@ -21,5 +21,11 @@
   "homepage": "https://github.com/strugee/node-get-webmention-url#readme",
   "devDependencies": {
     "tape": "^4.8.0"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "concat-stream": "^1.6.0",
+    "follow-redirects": "^1.2.5",
+    "li": "^1.2.1"
   }
 }
