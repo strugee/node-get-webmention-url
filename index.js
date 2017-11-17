@@ -21,10 +21,20 @@ var http = require('follow-redirects').http,
     li = require('li'),
     cheerio = require('cheerio'),
     compact = require('lodash.compact'),
-    url = require('url');
+    url = require('url'),
+    pkg = require('./package');
 
-module.exports = function getWebmentionUrl(sourceUrl, cb) {
-	var parsed = url.parse(sourceUrl);
+module.exports = function getWebmentionUrl(opts, cb) {
+	var parsed;
+	if (typeof opts === 'string') {
+		parsed = url.parse(opts);
+	} else if (opts.url) {
+		parsed = url.parse(opts.url);
+	} else {
+		parsed = opts;
+	}
+
+	parsed.headers = {'user-agent': opts.ua || 'node.js/' + process.versions.node + ' get-webmention-url/' + pkg.version};
 
 	var client = parsed.protocol === 'http:' ? http : https;
 
