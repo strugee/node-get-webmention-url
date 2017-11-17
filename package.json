@@ -4,7 +4,7 @@
   "description": "Get a Webmention endpoint from a URL",
   "main": "index.js",
   "scripts": {
-    "test": "tape test/*.js"
+    "test": "nyc -r lcov tape test/*.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/strugee/node-get-webmention-url#readme",
   "devDependencies": {
+    "coveralls": "^3.0.0",
+    "nyc": "^11.3.0",
     "tape": "^4.8.0"
   },
   "dependencies": {
