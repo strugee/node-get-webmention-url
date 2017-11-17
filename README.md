@@ -34,6 +34,10 @@ lookup('https://example.com/index.html', function(err, url) {
 });
 ```
 
+## Security considerations
+
+This module does not do anything to address the Webmention spec's [security considerations section][]. You need to take care of this yourself.
+
 ## Version support
 
 Supports Node 4+.
@@ -47,3 +51,4 @@ AJ Jordan <alex@strugee.net>
 Lesser GPL 3.0+, except for the tests which were stolen from @connrs and so are BSD 3-clause
 
  [`lookup-webmention-server`]: https://github.com/connrs/node-lookup-webmention-server
+ [security considerations section]: https://www.w3.org/TR/webmention/#security-considerations
