@@ -2,6 +2,12 @@
 
 `get-webmention-url` adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.0.3 - 2017-11-17
+
+### Fixed
+
+* Pull in the correct `Array.prototype.includes` polyfill in `package.json`
+
 ## 1.0.2 - 2017-11-17
 
 ### Fixed
