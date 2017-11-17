@@ -39,7 +39,7 @@ module.exports = function getWebmentionUrl(sourceUrl, cb) {
 			    endpoint = links.webmention || links['http://webmention.org/'];
 
 			if (endpoint) {
-				cb(undefined, endpoint);
+				cb(undefined, url.resolve(sourceUrl, endpoint));
 				return;
 			}
 		}
