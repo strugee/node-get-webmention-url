@@ -4,7 +4,7 @@
   "description": "Get a Webmention endpoint from a URL",
   "main": "index.js",
   "scripts": {
-    "test": "nyc -r lcov tape test.js"
+    "test": "nyc -r text -r lcov tape test.js"
   },
   "repository": {
     "type": "git",
