@@ -1,6 +1,7 @@
 var test = require('tape');
 var lookupWebmentionServer = require('./index.js');
 var http = require('http');
+var url = require('url');
 var host = 'localhost';
 var port = 3001;
 
@@ -39,6 +40,38 @@ test('error looking up target server', function (t) {
   lookupWebmentionServer(target, function (err, url) {
     t.ok(err instanceof Error);
     t.notOk(url);
+    t.end();
+  });
+});
+
+test('passed an options object to the module', function (t) {
+  var target = 'http://' + host + ':' + port + '/good_url';
+  var server = http.createServer(function (req, res) {
+    res.statusCode = 200;
+    res.setHeader('Link', '<http://example.org/webmention>; rel="webmention"');
+    res.end('test');
+  }).listen(port);
+
+  lookupWebmentionServer({url: target}, function (err, url) {
+    server.close();
+    t.error(err);
+    t.equal(url, 'http://example.org/webmention');
+    t.end();
+  });
+});
+
+test('passed a Node URL object to the module', function (t) {
+  var target = 'http://' + host + ':' + port + '/good_url';
+  var server = http.createServer(function (req, res) {
+    res.statusCode = 200;
+    res.setHeader('Link', '<http://example.org/webmention>; rel="webmention"');
+    res.end('test');
+  }).listen(port);
+
+  lookupWebmentionServer(url.parse(target), function (err, url) {
+    server.close();
+    t.error(err);
+    t.equal(url, 'http://example.org/webmention');
     t.end();
   });
 });

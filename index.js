@@ -15,6 +15,7 @@
 
 'use strict';
 
+/* istanbul ignore if */
 if (!Array.prototype.includes) require('es7-array.prototype.includes');
 
 var http = require('follow-redirects').http,
@@ -38,7 +39,7 @@ module.exports = function getWebmentionUrl(opts, cb) {
 
 	parsed.headers = {'user-agent': opts.ua || 'node.js/' + process.versions.node + ' get-webmention-url/' + pkg.version};
 
-	var client = parsed.protocol === 'http:' ? http : https;
+	var client = parsed.protocol === 'http:' ? http : /* istanbul ignore next */ https;
 
 	var req = client.get(parsed, function(res) {
 		if (res.statusCode < 200 || res.statusCode >= 300) {
