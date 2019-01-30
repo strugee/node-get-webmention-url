@@ -27,7 +27,7 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "concat-stream": "^2.0.0",
-    "es7-array.prototype.includes": "^2.0.0",
+    "es7-array.prototype.includes": "^3.0.0",
     "follow-redirects": "^1.2.5",
     "li": "^1.2.1",
     "lodash.compact": "^3.0.1"
