@@ -4,7 +4,9 @@
   "description": "Get a Webmention endpoint from a URL",
   "main": "index.js",
   "scripts": {
-    "test": "nyc -r text -r lcov tape test.js"
+    "test": "nyc -r text -r lcov tape test.js",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -30,6 +32,8 @@
     "es7-array.prototype.includes": "^3.0.0",
     "follow-redirects": "^1.2.5",
     "li": "^1.2.1",
-    "lodash.compact": "^3.0.1"
-  }
+    "lodash.compact": "^3.0.1",
+    "snyk": "^1.189.0"
+  },
+  "snyk": true
 }
