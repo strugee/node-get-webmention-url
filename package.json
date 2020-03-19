@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/strugee/node-get-webmention-url#readme",
   "devDependencies": {
-    "coveralls": "^3.0.1",
+    "coveralls": "^3.0.11",
     "nyc": "^14.0.0",
     "tape": "^4.8.0"
   },
