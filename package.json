@@ -22,7 +22,7 @@
   "devDependencies": {
     "coveralls": "^3.0.1",
     "nyc": "^14.0.0",
-    "tape": "^4.8.0"
+    "tape": "^5.0.0"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
