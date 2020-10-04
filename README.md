@@ -62,7 +62,7 @@ This module does not do anything to address the Webmention spec's [security cons
 
 ## Version support
 
-Supports Node 4+.
+Supports Node 8+.
 
 ## Author
 
