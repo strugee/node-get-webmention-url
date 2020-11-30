@@ -29,7 +29,7 @@
     "concat-stream": "^2.0.0",
     "es7-array.prototype.includes": "^3.0.0",
     "follow-redirects": "^1.2.5",
-    "li": "^1.2.1",
+    "li": "^1.3.0",
     "lodash.compact": "^3.0.1"
   }
 }
